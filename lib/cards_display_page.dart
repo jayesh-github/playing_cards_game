@@ -10,26 +10,16 @@ class CardsDisplayPage extends StatefulWidget {
 }
 
 class _CardsDisplayPageState extends State<CardsDisplayPage> {
+  List<int> cards = List.generate(13, (index) => index);
   // List to hold the cards
-  late List<int> cards;
   int? startIndex;
   int? indexAfterDrag;
   Suit suit = Suit.spades;
   CardValue value = CardValue.eight;
 
   @override
-  void initState() {
-    super.initState();
-    initializeCardOrder();
-  }
-
-  void initializeCardOrder() {
-    List<int> cards = List.generate(13, (index) => index);
-    cards.shuffle();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    cards.shuffle();
     var rightPadding = MediaQuery.of(context).size.width * 0.10;
     var leftPadding = MediaQuery.of(context).size.width * 0.30;
     return Container(
